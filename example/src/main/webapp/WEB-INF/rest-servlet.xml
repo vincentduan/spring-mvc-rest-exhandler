@@ -15,21 +15,17 @@
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="com.stormpath.blog.spring.http.converter.json.DefaultJacksonHttpMessageConverter">
-                <!-- True only for the blog article - a production system would set this to false to reduce
-                     the number of bytes sent across the wire: -->
                 <property name="prettyPrint" value="true"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <mvc:interceptors>
+<!--     <mvc:interceptors>
         <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>
         </bean>
-    </mvc:interceptors>
+    </mvc:interceptors> -->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
 
-    <!-- Unfortunately we have to repeat an instance of this class here because the mvc:message-converters element above
-         does not support <ref/> elements: -->
     <bean id="jacksonHttpMessageConverter" class="com.stormpath.blog.spring.http.converter.json.DefaultJacksonHttpMessageConverter">
         <property name="prettyPrint" value="true"/>
     </bean>
